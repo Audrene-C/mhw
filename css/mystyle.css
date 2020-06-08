@@ -1,0 +1,43 @@
+body {
+	background: url(https://i.pinimg.com/originals/ed/1f/6c/ed1f6c0a12108329f00c6c575187ab11.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: white;
+}
+
+h1
+{
+  font-size: 40px;
+  line-height: 50px;
+  text-shadow: -1px -1px blue, 1px 1px grey, -3px 0 4px black;
+  font-family:"Segoe print", Arial, Helvetica, sans-serif;
+  color: white; 
+  padding:32px;
+  font-weight:lighter;
+  text-align:center;
+}
+
+h2
+{
+  font-size: 30px;
+  line-height: 20px;
+  text-shadow: -1px -1px brown, 1px 1px grey, -3px 0 4px black;
+  font-family:"Segoe print", sans-serif;
+  color: white; 
+  padding:32px;
+  font-weight:lighter;
+  text-align:left;
+}
+
+.img-circle {
+	-webkit-box-shadow: 10px 10px 5px black;
+	-moz-box-shadow: 10px 10px 5px black;
+	-o-box-shadow: 10px 10px 5px black;
+	box-shadow: 10px 10px 5px black;
+}
+
+.btn {
+	font-style: italic;
+}
