@@ -18,180 +18,63 @@
     </div>
 
     <div class="container-fluid">
-        <h2>Wywernes de terre</h2>
 
         <?php 
-            $req = $database->query('SELECT * FROM wywernes_de_terre ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+            for ($i=0; $i < 7; $i++) {
+                $results = [];
+                if($i == 0) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Wywerne de terre" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Wywernes de terre</h2> <?php
+                } elseif($i == 1) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Wywerne rapace" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Wywernes rapace</h2> <?php
+                } elseif($i == 2) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Wywerne à crocs" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Wywernes à crocs</h2> <?php
+                } elseif($i == 3) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Wywerne aquatique" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Wywernes aquatiques</h2> <?php
+                } elseif($i == 4) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Wywerne volante" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Wywernes volantes</h2> <?php
+                } elseif($i == 5) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Dragon ancien" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Dragons anciens</h2> <?php
+                } elseif($i == 6) {
+                    $req = $database->query('SELECT * FROM bestiaire WHERE bestiaire.type = "Autre grand monstre" ORDER BY nom');
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
+                    <h2>Autres grands monstres</h2> <?php
+                }
+                          
 
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-                
-        <h2>Wywernes rapace</h2>
+                $numOfCols = 3;
+                $rowCount = 0;
+                foreach ($results as $result){
+                if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
+                    $rowCount++; ?>  
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <h3><?php echo ($result['nom']); ?></h3>
+                            <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
+                            <p>
+                                Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
+                                Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
+                                Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
+                                Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
+                                Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
+                            </p>
+                        </div>
+                <?php
+                    if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } 
+                }
+            }
 
-        <?php 
-            $req = $database->query('SELECT * FROM wywernes_rapace ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-
-        <h2>Wywernes à crocs</h2>
-
-        <?php 
-            $req = $database->query('SELECT * FROM wywernes_a_crocs ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-
-        <h2>Wywernes aquatiques</h2>
-
-        <?php 
-            $req = $database->query('SELECT * FROM wywernes_aquatiques ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-
-        <h2>Wywernes volantes</h2>
-
-        <?php 
-            $req = $database->query('SELECT * FROM wywernes_volantes ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-
-        <h2>Dragons anciens</h2>
-
-        <?php 
-            $req = $database->query('SELECT * FROM dragons_anciens ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
-
-        <h2>Autres grands monstres</h2>
-
-        <?php 
-            $req = $database->query('SELECT * FROM autres_grands_monstres ORDER BY nom');
-            $results = $req->fetchAll(PDO::FETCH_ASSOC);
-
-            $numOfCols = 3;
-            $rowCount = 0;
-            foreach ($results as $result){
-            if($rowCount % $numOfCols == 0) { ?> <div class="row"> <?php } 
-                $rowCount++; ?>  
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3><?php echo ($result['nom']); ?></h3>
-                        <img class="img-circle" src="img/<?php echo (strtolower($result['image'])); ?>" alt="<?php echo ($result['nom']); ?>" width="140" height="140">
-                        <p>
-                            Feu : <?php echo ($result['feu']); ?> Poison : <?php echo ($result['poison']); ?></br>
-                            Eau : <?php echo ($result['eau']); ?> Sommeil : <?php echo ($result['sommeil']); ?></br>
-                            Foudre : <?php echo ($result['foudre']); ?> Paralysie : <?php echo ($result['paralysie']); ?></br>
-                            Glace : <?php echo ($result['glace']); ?> Explosion : <?php echo ($result['explosion']); ?></br>
-                            Dragon : <?php echo ($result['dragon']); ?> Etourdissement : <?php echo ($result['etourdissement']); ?>
-                        </p>
-                    </div>
-            <?php
-                if($rowCount % $numOfCols == 0 || $rowCount == count($results)) { ?> </div> <?php } } ?>
+        ?>            
 
     </div>
     
